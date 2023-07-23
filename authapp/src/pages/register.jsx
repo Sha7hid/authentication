@@ -3,9 +3,10 @@ import Layout from "../../layout/layout";
 import Link from "next/link";
 import styles from '../styles/Form.module.css'
 import Image from 'next/image'
-import { HiAtSymbol,HiFingerPrint} from "react-icons/hi";
+import { HiAtSymbol,HiFingerPrint, HiOutlineUser} from "react-icons/hi";
 import { useState } from "react";
 export default function Register() {
+    const[show,setShow] = useState({password:false,cpassword:false})
     return (
         <>
         <Layout>
@@ -24,7 +25,7 @@ export default function Register() {
         className={styles.input_text}
         />
         <span className="icon flex items-center px-4">
-        <HiAtSymbol size={25}/>
+        <HiOutlineUser size={25}/>
         </span>
     </div>
     <div className={styles.input_group}>
@@ -39,25 +40,25 @@ export default function Register() {
     </div>
     <div className={styles.input_group}>
         {/* password show  */}
-        <input type={`${true? "text":"password"}`}
+        <input type={`${show.password? "text":"password"}`}
         name="password"
         placeholder="Password"
         className={styles.input_text}
         />
         {/* password onclick */}
-         <span className="icon flex items-center px-4" onClick={()=> setShow(!show)}>
+         <span className="icon flex items-center px-4" onClick={()=> setShow({...show,password:!show.password})}>
         <HiFingerPrint size={25}/>
         </span>
     </div>
     <div className={styles.input_group}>
         {/* password show  */}
-        <input type={`${true? "text":"password"}`}
+        <input type={`${show.cpassword? "text":"password"}`}
         name="cpassword"
         placeholder="Confirm Password"
         className={styles.input_text}
         />
         {/* password onclick */}
-         <span className="icon flex items-center px-4" onClick={()=> setShow(!show)}>
+         <span className="icon flex items-center px-4" onClick={()=> setShow({...show,cpassword:!show.cpassword})}>
         <HiFingerPrint size={25}/>
         </span>
     </div>
@@ -70,7 +71,7 @@ export default function Register() {
 </form>
 {/*bottom */}
 <p className="text-center text-gray-400">
-    don't have an account yet? <Link className="text-blue-700"href={'/register'}>Sign Up</Link>
+    Have an account? <Link className="text-blue-700"href={'/login'}>Sign In</Link>
 </p>
      </section>
         </div>
