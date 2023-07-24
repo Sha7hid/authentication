@@ -5,10 +5,19 @@ import styles from '../styles/Form.module.css'
 import Image from 'next/image'
 import { HiAtSymbol,HiFingerPrint} from "react-icons/hi";
 import { useState } from "react";
+import { signIn,signOut } from "next-auth/react";
 export default function Login() {
     /* for password show and not show */
     const [show,setShow] =useState(false)
-  return (
+  // Google Handler function
+  async function handleGoogleSignin(){
+    signIn('google',{callbackUrl:"http://localhost:3000"})
+  }
+  //Github Login
+  async function handleGithubSignin(){
+    signIn('github',{callbackUrl:"http://localhost:3000"})
+  }
+    return (
     <>
     <Layout>
     <Head>
@@ -50,12 +59,12 @@ export default function Login() {
         </button>
     </div>
     <div className="input-button">
-    <button type="button" className={styles.button_custom}>
+    <button type="button" onClick={handleGoogleSignin} className={styles.button_custom}>
             Sign In with Google <Image src={'/assets/google.svg'} width={20} height={20}></Image>
         </button>
     </div>
     <div className="input-button">
-    <button type="button" className={styles.button_custom}>
+    <button type="button" onClick={handleGithubSignin} className={styles.button_custom}>
             Sign In with Github <Image src={'/assets/github.svg'} width={25} height={25}></Image>
         </button>
     </div>
