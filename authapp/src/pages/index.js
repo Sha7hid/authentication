@@ -42,7 +42,7 @@ function User({session,handleSignOut}){
 <button onClick={handleSignOut}className="mt-5 px-10 py-1 rounded-sm bg-indigo-500 bg-gray-50">Sign Out</button>
 </div>
  <div className="flex justify-center">
-<Link href={'/login'} className="mt-5 px-10 py-1 rounded-sm bg-indigo-500 text-gray">Sign In</Link>
+<Link href={'/profile'} className="mt-5 px-10 py-1 rounded-sm bg-indigo-500 text-gray">Profile Page</Link>
  </div>
   </main>
   )
