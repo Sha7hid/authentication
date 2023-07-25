@@ -47,7 +47,7 @@ function User({session,handleSignOut}){
   </main>
   )
 }
-
+// for protected route or to redirect to login if not signed in
 export async function getServerSideProps({req}){
   const session = await getSession({req})
  if(!session){
